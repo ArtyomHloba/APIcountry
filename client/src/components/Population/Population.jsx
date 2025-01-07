@@ -8,7 +8,7 @@ function Population ({ populationData }) {
 
   return (
     <div className={styles.tableContainer}>
-      <h2>Population numbers over the years:</h2>
+      <h2 className={styles.title}>Population numbers over the years:</h2>
       <table className={styles.populationTable}>
         <thead>
           <tr>

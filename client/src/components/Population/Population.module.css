@@ -13,3 +13,8 @@
   text-align: center;
   border: 1px solid #ddd;
 }
+
+.title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}

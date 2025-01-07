@@ -9,6 +9,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: #a6afde;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -19,6 +23,20 @@ a {
   font-size: 2em;
 }
 
+.image {
+  width: 800px;
+  height: 400px;
+  object-fit: cover;
+}
+
 .countryName {
   margin-bottom: 10px;
+}
+
+.nameOfCountry {
+  font-size: 2em;
+}
+
+.neerestCountry {
+  margin-bottom: 5px;
 }

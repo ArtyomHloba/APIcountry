@@ -33,9 +33,13 @@ function CountryInfo () {
 
   return (
     <div className={styles.container}>
-      <h1>{countryInfo?.name}</h1>
+      <h1 className={styles.nameOfCountry}>{countryInfo?.name}</h1>
       {countryInfo?.flag ? (
-        <img src={countryInfo.flag} alt={`${countryInfo.name} flag`} />
+        <img
+          className={styles.image}
+          src={countryInfo.flag}
+          alt={`${countryInfo.name} flag`}
+        />
       ) : (
         <p className={styles.noData}>Flag not available.</p>
       )}
@@ -43,7 +47,7 @@ function CountryInfo () {
       <ul>
         {countryInfo?.borders && countryInfo.borders.length > 0 ? (
           countryInfo.borders.map(border => (
-            <li key={border.countryCode}>
+            <li className={styles.neerestCountry} key={border.countryCode}>
               <a href={`/country/${border.countryCode}`}>
                 {border.commonName || border.countryCode}
               </a>
