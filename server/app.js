@@ -4,14 +4,15 @@ const axios = require('axios');
 
 const app = express();
 
-app.use(express.json());
+require('dotenv').config();
 
+app.use(express.json());
 app.use(cors());
 
 app.get('/countries', async (req, res) => {
   try {
     const response = await axios.get(
-      'https://date.nager.at/api/v3/AvailableCountries'
+      process.env.API_BASE_URL + '/AvailableCountries'
     );
     res.json(response.data);
   } catch (error) {
@@ -24,7 +25,7 @@ app.get('/country/:countryCode', async (req, res) => {
   const { countryCode } = req.params;
   try {
     const countryInfoRes = await axios.get(
-      `https://date.nager.at/api/v3/CountryInfo/${countryCode}`
+      `${process.env.API_BASE_URL}/CountryInfo/${countryCode}`
     );
     const countryName =
       countryInfoRes.data.commonName || countryInfoRes.data.name;
@@ -33,7 +34,7 @@ app.get('/country/:countryCode', async (req, res) => {
     }
 
     const populationRes = await axios
-      .post('https://countriesnow.space/api/v0.1/countries/population', {
+      .post(`${process.env.COUNTRY_API_URL}/population`, {
         country: countryName,
       })
       .catch(err => {
@@ -42,7 +43,7 @@ app.get('/country/:countryCode', async (req, res) => {
       });
 
     const flagRes = await axios
-      .post('https://countriesnow.space/api/v0.1/countries/flag/images', {
+      .post(`${process.env.COUNTRY_API_URL}/flag/images`, {
         country: countryName,
       })
       .catch(err => {
