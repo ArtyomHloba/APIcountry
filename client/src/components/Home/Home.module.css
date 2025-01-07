@@ -27,18 +27,17 @@
 
 .searchInput {
   width: 80%;
-  max-width: 400px;
-  padding: 10px 15px;
+  max-width: 250px;
+  padding: 5px 15px;
   font-size: 16px;
-  border: 2px solid #ccc;
-  border-radius: 25px;
+  border: 2px solid #a6afde;
+  border-radius: 10px;
   outline: none;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .searchInput:focus {
-  border-color: #007bff;
+  border-color: #a6afde;
 }
 
 .searchInput::placeholder {
