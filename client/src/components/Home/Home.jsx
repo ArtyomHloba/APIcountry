@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import PropagateLoader from 'react-spinners/PropagateLoader';
 import axios from 'axios';
 import styles from './Home.module.css';
 
@@ -20,7 +21,13 @@ function App () {
       });
   }, []);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) {
+    return (
+      <div className={styles.loaderContainer}>
+        <PropagateLoader color='#ffffff' />
+      </div>
+    );
+  }
   if (error) return <p>{error}</p>;
 
   return (

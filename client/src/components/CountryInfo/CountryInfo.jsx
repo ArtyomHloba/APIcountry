@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import PropagateLoader from 'react-spinners/PropagateLoader';
 
 import styles from './CountryInfo.module.css';
 import Population from '../Population/Population';
@@ -28,7 +29,13 @@ function CountryInfo () {
       });
   }, [countryCode]);
 
-  if (loading) return <div className={styles.loader}>Loading...</div>;
+  if (loading) {
+    return (
+      <div className={styles.loaderContainer}>
+        <PropagateLoader color='#ffffff' />
+      </div>
+    );
+  }
   if (error) return <p>{error}</p>;
 
   return (
