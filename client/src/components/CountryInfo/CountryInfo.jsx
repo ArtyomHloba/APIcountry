@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -33,6 +33,9 @@ function CountryInfo () {
 
   return (
     <div className={styles.container}>
+      <Link to='/' className={styles.backButton}>
+        Back
+      </Link>
       <h1 className={styles.nameOfCountry}>{countryInfo?.name}</h1>
       {countryInfo?.flag ? (
         <img
