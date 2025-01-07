@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import styles from './App.module.css';
 
 function App () {
   const [countries, setCountries] = useState([]);
@@ -19,15 +20,15 @@ function App () {
       });
   }, []);
 
-  if (loading) return <p>Загрузка...</p>;
+  if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
   return (
-    <div>
-      <h1>Список стран</h1>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Countries List</h1>
       <ul>
         {countries.map(country => (
-          <li key={country.countryCode}>
+          <li className={styles.countryName} key={country.countryCode}>
             <a href={`/country/${country.countryCode}`}>{country.name}</a>
           </li>
         ))}
