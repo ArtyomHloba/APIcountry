@@ -1,8 +1,7 @@
-import { useParams } from 'react-router-dom';
+import { data, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from './CountryInfo.module.css';
-
 function CountryInfo () {
   const { countryCode } = useParams();
   const [countryInfo, setCountryInfo] = useState(null);

@@ -33,9 +33,12 @@ app.get('/country/:countryCode', async (req, res) => {
     }
 
     const populationRes = await axios
-      .post('https://countriesnow.space/api/v0.1/countries/population', {
-        country: countryName,
-      })
+      .get(
+        'https://countriesnow.space/api/v0.1/countries/population?country=${countryName}',
+        {
+          country: countryName,
+        }
+      )
       .catch(err => {
         console.error('Failed to fetch population:', err.message);
         return { data: { data: { populationCounts: [] } } };
