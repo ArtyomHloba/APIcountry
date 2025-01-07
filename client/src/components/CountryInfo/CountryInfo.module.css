@@ -47,3 +47,8 @@ a:hover {
   align-items: center;
   height: 100vh;
 }
+
+.backButton {
+  display: flex;
+  align-items: center;
+}

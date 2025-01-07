@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import PropagateLoader from 'react-spinners/PropagateLoader';
+import { IoIosArrowBack } from 'react-icons/io';
 
 import styles from './CountryInfo.module.css';
 import Population from '../Population/Population';
@@ -40,9 +41,12 @@ function CountryInfo () {
 
   return (
     <div className={styles.container}>
-      <Link to='/' className={styles.backButton}>
-        Back
-      </Link>
+      <div className={styles.backArrowContainer}>
+        <Link to='/' className={styles.backButton}>
+          <IoIosArrowBack />
+          Back
+        </Link>
+      </div>
       <h1 className={styles.nameOfCountry}>{countryInfo?.name}</h1>
       {countryInfo?.flag ? (
         <img
