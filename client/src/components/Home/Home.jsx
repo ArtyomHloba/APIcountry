@@ -15,7 +15,7 @@ function App () {
       .get('http://localhost:5000/countries')
       .then(response => {
         setCountries(response.data);
-        setFilteredCountries(response.data); // Изначально показываем все страны
+        setFilteredCountries(response.data);
         setLoading(false);
       })
       .catch(error => {
