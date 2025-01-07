@@ -1,0 +1,15 @@
+.tableContainer {
+  margin-top: 20px;
+}
+
+.populationTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.populationTable th,
+.populationTable td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
