@@ -5,14 +5,17 @@ import styles from './Home.module.css';
 
 function App () {
   const [countries, setCountries] = useState([]);
+  const [filteredCountries, setFilteredCountries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     axios
       .get('http://localhost:5000/countries')
       .then(response => {
         setCountries(response.data);
+        setFilteredCountries(response.data); // Изначально показываем все страны
         setLoading(false);
       })
       .catch(error => {
@@ -20,6 +23,16 @@ function App () {
         setLoading(false);
       });
   }, []);
+
+  const handleSearch = e => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+
+    const filtered = countries.filter(country =>
+      country.name.toLowerCase().includes(query)
+    );
+    setFilteredCountries(filtered);
+  };
 
   if (loading) {
     return (
@@ -32,13 +45,27 @@ function App () {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Countries List</h1>
+      <div className={styles.searchContainer}>
+        <h1 className={styles.title}>Countries List</h1>
+        <input
+          type='text'
+          value={searchQuery}
+          onChange={handleSearch}
+          placeholder='Search country'
+          className={styles.searchInput}
+        />
+      </div>
+
       <ul>
-        {countries.map(country => (
-          <li className={styles.countryName} key={country.countryCode}>
-            <a href={`/country/${country.countryCode}`}>{country.name}</a>
-          </li>
-        ))}
+        {filteredCountries.length > 0 ? (
+          filteredCountries.map(country => (
+            <li className={styles.countryName} key={country.countryCode}>
+              <a href={`/country/${country.countryCode}`}>{country.name}</a>
+            </li>
+          ))
+        ) : (
+          <p className={styles.noResults}>No countries found.</p>
+        )}
       </ul>
     </div>
   );
